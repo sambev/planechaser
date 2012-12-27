@@ -1,4 +1,4 @@
 planechaser
 ===========
 
-App for planechase
+App for planechase.
