@@ -32,20 +32,21 @@ App.Models.Card = Backbone.Model.extend({
     },
     
     initialize: function() {
-        console.log('created');
-        this.validate();
+        this.bind('error', function(model, error){
+            alert(error);
+        });
     },
 
-    validate: function() {
+    validate: function(attb) {
         var error_msg = ''
-        if (this.name == null) {
+        if (attb.name == null || attb.name == '') {
             error_msg += 'Card must have a name. ';
         } 
-        if (this.desciption == null) {
+        if (attb.description == null || attb.description == '') {
             error_msg += 'Card must have a description. ';
         }
 
-        alert(error_msg);
+        return error_msg;
     },
 });
 
@@ -67,11 +68,11 @@ App.Models.PlaneCard = App.Models.Card.extend({
 /*  Phenominon Card Model
     - I model a Phenominon card from planechase. I inherit from Card,
     Methods:
-        - phenomEvent: my effect on the game 
+        - phenomEvent: my effect on the game.  This is a custom method that is
+          passed on creation.
 */
 App.Models.PhenomCard = App.Models.Card.extend({
-
-    phenomEvent: function( cb_func ) {
-        cb_func();
+    defualts: {
+        phenomEvent: function() { return null; }, 
     }
 });
