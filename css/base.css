@@ -1,0 +1,21 @@
+.center { text-align:center }
+
+.plane {
+    height: 550px;
+    background-color: grey;
+}
+
+.dice {
+    height: 150px;
+    background-color: yellow;
+}
+
+.start_over {
+    height: 150px;
+    background-color: red;
+}
+
+.shuffle {
+    height: 150px;
+    background-color: green;
+}

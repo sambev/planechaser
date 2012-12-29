@@ -30,24 +30,6 @@ App.Models.Card = Backbone.Model.extend({
         name: '',
         description: '',
     },
-    
-    initialize: function() {
-        this.bind('error', function(model, error){
-            alert(error);
-        });
-    },
-
-    validate: function(attb) {
-        var error_msg = ''
-        if (attb.name == null || attb.name == '') {
-            error_msg += 'Card must have a name. ';
-        } 
-        if (attb.description == null || attb.description == '') {
-            error_msg += 'Card must have a description. ';
-        }
-
-        return error_msg;
-    },
 });
 
 /*  Plane Card Model
@@ -76,3 +58,42 @@ App.Models.PhenomCard = App.Models.Card.extend({
         phenomEvent: function() { return null; }, 
     }
 });
+
+/* Planar Dice
+    - I model a Planar dice.  I have six sides, one of which is planeswalk, 
+      the other is choas
+*/
+App.Models.PlanarDice = Backbone.Model.extend({
+    defaults: {
+        sides: {
+            1: 'planeswalk',
+            2: 'blank',
+            3: 'blank',
+            4: 'choas',
+            5: 'blank',
+            6: 'blank',
+        }
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

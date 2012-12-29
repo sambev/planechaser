@@ -3,16 +3,59 @@
     <head>
         <meta charset="UTF-8">
         <title>PlaneChaser</title>
+        <link rel="stylesheet" href="css/bootstrap.min.css" />
         <link rel="stylesheet" href="css/base.css" />
     </head>
     <body>
-        <header>
-            <h2>PlaneChaser v.01</h2>
-        </header>
+        <div class="container">
+            <header class="center">
+                <h2>PlaneChaser v.01</h2>
+            </header>
+            <div class="row-fluid center">
+                <div class="span12" id="plane_container">
+                    <div id="planeview">
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row-fluid center">
+                <div class="span12">
+                    <div class="span3">
+                        <div class="start_over">
+                            <span>Start Over</span>
+                        </div>
+                    </div>
+                    <div class="span6">
+                        <div id="diceview">
+                        </div>
+                    </div>
+                    <div class="span3">
+                        <div class="shuffle">
+                            <span>Shuffle</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/template" id="plane-view-template">
+            <div class="plane">
+                <header>
+                    <h3><%= name %></h3>
+                </header>
+                <p><%= description %></p>
+                <p><%= chaos %></p>
+            </div>
+        </script>
+        <script type="text/template" id="dice-view-template">
+            <div class="dice"
+                <span>Shuffle</span>
+            </div>
+        </script>
         <!-- BACKBONE DECLARATIONS -->
         <script src="http://code.jquery.com/jquery-1.8.2.min.js" type="text/javascript"></script>
         <script src="js/underscore-min.js" type="text/javascript"></script>
         <script src="js/backbone-min.js" type="text/javascript"></script>
-        <script src="js/planechaser.js" type="text/javascript"></script>
+        <script src="js/models.js" type="text/javascript"></script>
+        <script src="js/views.js" type="text/javascript"></script>
     </body>
 </html>
