@@ -1,25 +1,16 @@
 .center { text-align:center }
 
 .plane {
-    height: 550px;
+    height: 450px;
     background-color: grey;
 }
 
 .dice {
     height: 150px;
-    background-color: yellow;
+    background-color: red;
 }
 
 .dice:hover {
     cursor:pointer;
 }
 
-.start_over {
-    height: 150px;
-    background-color: red;
-}
-
-.shuffle {
-    height: 150px;
-    background-color: green;
-}

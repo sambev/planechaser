@@ -18,11 +18,13 @@ App.Views.PlaneView = Backbone.View.extend({
     template: _.template($('#plane-view-template').html()),
 
     initialize: function() {
-        this.render();
+        // get a random active card, then render the view with that model
+        var active_card = this.collection.getActiveCard()
+        this.render(active_card);
     },
 
-    render: function() {
-        this.$el.html(this.template(this.model.toJSON()));
+    render: function(card) {
+        this.$el.html(this.template(card.toJSON()));
     }
 });
 
@@ -55,6 +57,7 @@ App.Views.DiceView = Backbone.View.extend({
     // rollDice method, rolls the dice
     rollDice: function (event) {
         this.model.rollDice();
+        alert(this.model.attributes.sides[this.model.attributes.active_side]);
     },
 });
 
@@ -63,18 +66,37 @@ App.Views.DiceView = Backbone.View.extend({
 //DOM STUFF
 $(function() {
     // create a plane model
-    var PlaneModel = new App.Models.PlaneCard({ 
+    App.PlaneOne = new App.Models.PlaneCard({ 
         name: 'First Plane', 
         description: 'populate stuff and such', 
         chaos: 'populate more and stuff and even more such'
     });
+    
+    App.PlaneTwo = new App.Models.PlaneCard({ 
+        name: 'Second Plane', 
+        description: 'destroy stuff and such', 
+        chaos: 'destory more and stuff and even more such'
+    });
+    
+    App.PlaneThree = new App.Models.PlaneCard({ 
+        name: 'Heal Plane', 
+        description: 'Heal stuff and such', 
+        chaos: 'Heal more and stuff and even more such'
+    });
+
+    // create a deck
+    App.PlanarDeck = new App.Collections.Deck([
+        App.PlaneOne,
+        App.PlaneTwo,
+        App.PlaneThree,
+    ]);
 
     // create a plane view
-    var FirstPlane = new App.Views.PlaneView({ model: PlaneModel })
+    App.DeckView = new App.Views.PlaneView({ collection: App.PlanarDeck })
 
     // create a dice model
-    var GameDice = new App.Models.PlanarDice();
+    App.GameDice = new App.Models.PlanarDice();
 
     // create a view for the dice
-    var DiceView = new App.Views.DiceView({ model:GameDice });
+    App.DiceView = new App.Views.DiceView({ model:App.GameDice });
 });

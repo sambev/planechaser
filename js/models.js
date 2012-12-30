@@ -65,6 +65,20 @@ App.Models.PhenomCard = App.Models.Card.extend({
     }
 });
 
+/* Deck
+    - I am a collection of PhenomCards and PlaneCards
+*/
+App.Collections.Deck = Backbone.Collection.extend({
+    model: App.Models.Card,
+    // Set one of the cards as active and return it
+    getActiveCard: function() {
+        max = this.models.length - 1;
+        index = randomNumber(0, max);
+        this.models[index].attributes.active = true;
+        return this.models[index];
+    }
+});
+
 /* Planar Dice
     - I model a Planar dice.  I have six sides, one of which is planeswalk, 
       the other is choas
