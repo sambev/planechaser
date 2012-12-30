@@ -3,6 +3,10 @@ Backbone.View.prototype.close = function() {
     this.undelegateEvents();
     this.empty;
     this.unbind();
+    // If I have an onClose method, call me as well
+    if (this.onClose) {
+        this.onClose();
+    }
 }
 
 /* PlaneView
@@ -31,13 +35,30 @@ App.Views.DiceView = Backbone.View.extend({
     template: _.template($('#dice-view-template').html()),
 
     initialize: function() {
+        this.model.on('change', this.render, this);
         this.render();
     },
 
     render: function() {
         this.$el.html(this.template(this.model.toJSON()));
-    }
+    },
+    
+    // Close me correctly, called with view.close() see top of this file
+    onClose: function() {
+        this.model.unbind('change', this.render); 
+    },
+
+    events: {
+        'click div[class=dice]': 'rollDice',
+    },
+
+    // rollDice method, rolls the dice
+    rollDice: function (event) {
+        this.model.rollDice();
+    },
 });
+
+
 
 //DOM STUFF
 $(function() {

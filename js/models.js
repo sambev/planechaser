@@ -5,6 +5,12 @@ var App = {
     Collections: {}
 }
 
+// random number generator for various methods
+var randomNumber = function(min, max) {
+    number = Math.floor(Math.random() * (max - min + 1)) + min;
+    return number
+};
+
 /*  Planar Deck Model
     - I consist of Plane cards and Phenom Cards... 
       perhaps I should be a collection
@@ -65,6 +71,7 @@ App.Models.PhenomCard = App.Models.Card.extend({
 */
 App.Models.PlanarDice = Backbone.Model.extend({
     defaults: {
+        active_side: randomNumber(1, 6),
         sides: {
             1: 'planeswalk',
             2: 'blank',
@@ -72,7 +79,21 @@ App.Models.PlanarDice = Backbone.Model.extend({
             4: 'choas',
             5: 'blank',
             6: 'blank',
-        }
+        },
+        // used for the chaos event when all blank sides are chaos
+        choas_sides: {
+            1: 'planeswalk',
+            2: 'chaos',
+            3: 'chaos',
+            4: 'chaos',
+            5: 'chaos',
+            6: 'chaos',
+        },
+    },
+
+    // roll the dice and set active side to the result
+    rollDice: function() {
+        this.set({active_side: randomNumber(1, 6)});
     }
 });
 
