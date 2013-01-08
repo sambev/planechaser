@@ -11,19 +11,6 @@ var randomNumber = function(min, max) {
     return number
 };
 
-/*  Planar Deck Model
-    - I consist of Plane cards and Phenom Cards... 
-      perhaps I should be a collection
-    Attr:
-        - planes, list of Plane Cards
-        - phenoms, list of Phenom Cards
-*/
-App.Models.PlanarDeck = Backbone.Model.extend({
-    defaults: {
-        planes: [],
-        phenoms: [], 
-    },
-});
 
 /*  Card Model
     - I model a Card
@@ -74,8 +61,18 @@ App.Collections.Deck = Backbone.Collection.extend({
     getActiveCard: function() {
         max = this.models.length - 1;
         index = randomNumber(0, max);
-        this.models[index].attributes.active = true;
+        this.models[index].set({ active: true });
         return this.models[index];
+    },
+    
+    // Planeswalk method: set a new active plane
+    planesWalk: function() {
+        // make all my cards inactive
+        _.each(this.models, function(card) {
+            card.set({ active: false });
+        });
+        // return a new active card
+        return this.getActiveCard();
     }
 });
 

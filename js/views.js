@@ -19,12 +19,15 @@ App.Views.PlaneView = Backbone.View.extend({
 
     initialize: function() {
         // get a random active card, then render the view with that model
-        var active_card = this.collection.getActiveCard()
-        this.render(active_card);
+        _.each(this.collection.models, function(model) {
+            model.on('change', this.render, this);
+        });
+        this.render();
     },
 
-    render: function(card) {
-        this.$el.html(this.template(card.toJSON()));
+    render: function() {
+        var active_card = this.collection.planesWalk()
+        this.$el.html(this.template(active_card.toJSON()));
     }
 });
 
@@ -57,7 +60,11 @@ App.Views.DiceView = Backbone.View.extend({
     // rollDice method, rolls the dice
     rollDice: function (event) {
         this.model.rollDice();
-        alert(this.model.attributes.sides[this.model.attributes.active_side]);
+        outcome = this.model.attributes.sides[this.model.attributes.active_side];
+        alert(outcome);
+        if (outcome == 'planeswalk') {
+            App.DeckView.render();
+        }
     },
 });
 
