@@ -1,9 +1,5 @@
 .center { text-align:center }
 
-.dice {
-    height: 150px;
-    background-color: red;
-}
 
 .dice:hover {
     cursor:pointer;
