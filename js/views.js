@@ -72,30 +72,41 @@ App.Views.DiceView = Backbone.View.extend({
 
 //DOM STUFF
 $(function() {
-    // create a plane model
-    App.PlaneOne = new App.Models.PlaneCard({ 
-        name: 'First Plane', 
-        description: 'populate stuff and such', 
-        chaos: 'populate more and stuff and even more such'
-    });
-    
-    App.PlaneTwo = new App.Models.PlaneCard({ 
-        name: 'Second Plane', 
-        description: 'destroy stuff and such', 
-        chaos: 'destory more and stuff and even more such'
-    });
-    
-    App.PlaneThree = new App.Models.PlaneCard({ 
-        name: 'Heal Plane', 
-        description: 'Heal stuff and such', 
-        chaos: 'Heal more and stuff and even more such'
-    });
-
     // create a deck
     App.PlanarDeck = new App.Collections.Deck([
-        App.PlaneOne,
-        App.PlaneTwo,
-        App.PlaneThree,
+        App.Akoum = new App.Models.PlaneCard({ name: 'akoum', }),
+        App.Aretopolis = new App.Models.PlaneCard({ name: 'aretopolis', }),
+        App.AstralArena = new App.Models.PlaneCard({ name: 'astral-arena', }),
+        App.Bloodhill = new App.Models.PlaneCard({ name: 'bloodhill-bastion', }),
+        App.EdgeOfMalacol = new App.Models.PlaneCard({ name: 'edge-of-malacol', }),
+        App.FurnaceLayer = new App.Models.PlaneCard({ name: 'furnace-layer', }),
+        App.Gavony = new App.Models.PlaneCard({ name: 'gavony', }),
+        App.GlenElendra = new App.Models.PlaneCard({ name: 'glen-elendra', }),
+        App.GrandOssuary = new App.Models.PlaneCard({ name: 'grand-ossuary', }),
+        App.GroveOfTheDreampods = new App.Models.PlaneCard({ name: 'grove-of-the-dreampods', }),
+        App.HedronFields = new App.Models.PlaneCard({ name: 'hedron-fields-of-agadeem', }),
+        App.Jund = new App.Models.PlaneCard({ name: 'jund', }),
+        App.Kessig = new App.Models.PlaneCard({ name: 'kessig', }),
+        App.KharashaFoothills = new App.Models.PlaneCard({ name: 'kharasha-foothills', }),
+        App.KilnspireDistrict = new App.Models.PlaneCard({ name: 'kilnspire-district', }),
+        App.LairOfTheAshenIdol = new App.Models.PlaneCard({ name: 'lair-of-the-ashen-idol', }),
+        App.MountKeralia = new App.Models.PlaneCard({ name: 'mount-keralia', }),
+        App.Nephalia = new App.Models.PlaneCard({ name: 'nephalia', }),
+        App.NornsDominion = new App.Models.PlaneCard({ name: 'norns-dominion', }),
+        App.OnakkeCatacomb = new App.Models.PlaneCard({ name: 'onakke-catacomb', }),
+        App.Orochicolony = new App.Models.PlaneCard({ name: 'orochi-colony', }),
+        App.Orzhova = new App.Models.PlaneCard({ name: 'orzhova', }),
+        App.Prahv = new App.Models.PlaneCard({ name: 'prahv', }),
+        App.QuicksilverSea = new App.Models.PlaneCard({ name: 'quicksilver-sea', }),
+        App.SelesnyaGardens = new App.Models.PlaneCard({ name: 'selesnya-loft-gardens', }),
+        App.StairsToInfinity = new App.Models.PlaneCard({ name: 'stairs-to-infinity', }),
+        App.Stensia = new App.Models.PlaneCard({ name: 'stensia', }),
+        App.Takenuma = new App.Models.PlaneCard({ name: 'takenuma', }),
+        App.TalonGates = new App.Models.PlaneCard({ name: 'talon-gates', }),
+        App.TheZephyrMaze = new App.Models.PlaneCard({ name: 'the-zephyr-maze', }),
+        App.TrailOfTheMageRings = new App.Models.PlaneCard({ name: 'trail-of-the-mage-rings', }),
+        App.TrugaJungle = new App.Models.PlaneCard({ name: 'truga-jungle', }),
+        App.WindriddlePalaces = new App.Models.PlaneCard({ name: 'windriddle-palaces', }),
     ]);
 
     // create a plane view

@@ -1,10 +1,5 @@
 .center { text-align:center }
 
-.plane {
-    height: 450px;
-    background-color: grey;
-}
-
 .dice {
     height: 150px;
     background-color: red;

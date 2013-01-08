@@ -45,9 +45,11 @@ root = Resource()
 #static files
 static_js = File('./js')
 static_css = File('./css')
+static_img = File('./imgs')
 
 root.putChild('js', static_js)
 root.putChild('css', static_css)
+root.putChild('imgs', static_img)
 root.putChild('', Main())
 
 site = Site(root)
