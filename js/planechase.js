@@ -40,31 +40,31 @@ $(function() {
         App.MorphicTide = new App.Models.PhenomCard({
             name: 'morphic-tide',
             phenomEvent: function(ev) {
-                console.log('hi');
+                App.DeckView.render()
             },
         }),
         App.MutualEpiphany = new App.Models.PhenomCard({
             name: 'mutual-epiphany',
             phenomEvent: function(ev) {
-                return null;
+                App.DeckView.render()
             },
         }),
         App.PlanewideDisaster = new App.Models.PhenomCard({
             name: 'planewide-disaster',
             phenomEvent: function(ev) {
-                return null;
+                App.DeckView.render()
             },
         }),
         App.RealityShaping = new App.Models.PhenomCard({
             name: 'reality-shaping',
             phenomEvent: function(ev) {
-                return null;
+                App.DeckView.render()
             },
         }),
         App.TimeDistortion = new App.Models.PhenomCard({
             name: 'time-distortion',
             phenomEvent: function(ev) {
-                return null;
+                App.DeckView.render()
             },
         }),
         // Crazy phenoms
@@ -84,4 +84,9 @@ $(function() {
 
     // create a view for the dice
     App.DiceView = new App.Views.DiceView({ model:App.GameDice });
+
+    // watch a click on the planewalk button and planewalk if it is clicked
+    $('.planeswalk').click(function(ev) {
+        App.DeckView.render()
+    });
 });
