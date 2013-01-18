@@ -29,13 +29,14 @@ App.Models.Card = Backbone.Model.extend({
     - I model a Plane card from planechase, I inherit from the Card Model
     Attr:
         - chaos: string, repr what happens with chaos is rolled
-        - active: bool, whether or not I am on the board.
-                  True if I am on the board. default is False.
+        - card_status: the status of the card.  Currently, it can be
+          'active', 'inactive', or 'used'.  'used' cards are cards
+          that have been active, but no longer are
 */
 App.Models.PlaneCard = App.Models.Card.extend({
     defaults: {
         chaos: '',
-        active: false,
+        card_status: 'inactive'
     }
 });
 
@@ -58,22 +59,19 @@ App.Models.PhenomCard = App.Models.Card.extend({
 App.Collections.Deck = Backbone.Collection.extend({
     model: App.Models.Card,
     // Set one of the cards as active and return it
-    getActiveCard: function() {
-        max = this.models.length - 1;
-        index = randomNumber(0, max);
-        this.models[index].set({ active: true });
-        return this.models[index];
-    },
-    
-    // Planeswalk method: set a new active plane
     planesWalk: function() {
-        // make all my cards inactive
+        var inactive_cards = [];
+        // get all the active cards
         _.each(this.models, function(card) {
-            card.set({ active: false });
+            if(card.attributes.card_status == 'inactive') {
+                inactive_cards.push(card);
+            }
         });
-        // return a new active card
-        return this.getActiveCard();
-    }
+        max = inactive_cards.length - 1;
+        index = randomNumber(0, max);
+        inactive_cards[index].set({ card_status: 'active' });
+        return inactive_cards[index];
+    },
 });
 
 /* Planar Dice
