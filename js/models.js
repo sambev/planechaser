@@ -79,17 +79,23 @@ App.Collections.Deck = Backbone.Collection.extend({
 /* Planar Dice
     - I model a Planar dice.  I have six sides, one of which is planeswalk, 
       the other is choas
+    Attributes:
+        active_side: the active side I am showing
+        chaotic: if I am using chaos sides or not, defaults to false
+        sides: the sides I use normaly
+        choas_sides: the sides I use when chaotic
 */
 App.Models.PlanarDice = Backbone.Model.extend({
     defaults: {
         active_side: randomNumber(1, 6),
+        chaotic: false,
         sides: {
             1: 'planeswalk',
-            2: 'blank',
+            2: 'try again',
             3: 'blank',
             4: 'choas',
-            5: 'blank',
-            6: 'blank',
+            5: 'sorry',
+            6: 'missed',
         },
         // used for the chaos event when all blank sides are chaos
         choas_sides: {
@@ -105,6 +111,11 @@ App.Models.PlanarDice = Backbone.Model.extend({
     // roll the dice and set active side to the result
     rollDice: function() {
         this.set({active_side: randomNumber(1, 6)});
+        if(this.attributes.chaotic) {
+            return this.attributes.choas_sides[this.attributes.active_side];
+        } else {
+            return this.attributes.sides[this.attributes.active_side];
+        }
     }
 });
 

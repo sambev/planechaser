@@ -9,13 +9,6 @@
     <body>
         <div class="container">
             <div class="row-fluid center">
-                <div class="span12">
-                    <header>
-                        <h2>PlaneChaser v.01</h2>
-                    <header>
-                </div>
-            </div>
-            <div class="row-fluid center">
                 <div class="span12" id="plane_container">
                     <div id="planeview">
                     </div>
@@ -33,7 +26,7 @@
         </div>
         <script type="text/template" id="plane-view-template">
             <div class="plane">
-                <img src="imgs/new_<%= name %>.jpg" />
+                <img src="imgs/planes/<%= name %>.jpg" />
             </div>
         </script>
         <script type="text/template" id="dice-view-template">
@@ -47,5 +40,6 @@
         <script src="js/backbone-min.js" type="text/javascript"></script>
         <script src="js/models.js" type="text/javascript"></script>
         <script src="js/views.js" type="text/javascript"></script>
+        <script src="js/planechase.js" type="text/javascript"></script>
     </body>
 </html>
